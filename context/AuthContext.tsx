@@ -12,7 +12,14 @@ interface IUser {
     displayName: string | null;
 }
 
-export const AuthContext = createContext<any>({uid: '',email:'' ,displayName:''})
+interface IAuthContext {
+    user: IUser | null;
+    signup: Function;
+    login: Function;
+    logout: Function;
+}
+
+export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 export const useAuth = () => useContext(AuthContext)
 
